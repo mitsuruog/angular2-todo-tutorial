@@ -7,7 +7,16 @@
 
   <div id="main">
     <ul *ng-for="#todo of todos; var i = index">
-      <li>{{i+1}}. {{todo.title}}</li>
+      <li>
+        <input type="checkbox"
+               (click)="toggleComplete(todo)"
+               [checked]="todo.completed">
+        <label (dblclick)="editTodo(todo)">{{i+1}}. {{todo.title}}</label>
+        <input [style.display]="todo.isEdit?'inline-block':'none'"
+             [value]="todo.title"
+               (keyup)="editCompleted($event, todo)">
+        <button (click)="deleteTodo(todo)">delete</button>
+      </li>
     </ul>
   </div>
 

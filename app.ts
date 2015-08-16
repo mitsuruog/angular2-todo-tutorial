@@ -35,8 +35,31 @@ class TodoApp {
   addTodo(text) {
     this.todos.push({
       title: text,
+      isEdit: false,
       completed: false
     });
+  }
+
+  editTodo(todo) {
+    todo.isEdit = true;
+  }
+
+  editCompleted($event, todo) {
+    // Enter Key
+    if($event.which === 13) {
+      var target = $event.target;
+      todo.title = target.value;
+      todo.isEdit = null;
+    }
+  }
+
+  deleteTodo(todo) {
+    var index = this.todos.indexOf(todo);
+    this.todos.splice(index, 1);
+  }
+
+  toggleComplete(todo) {
+    todo.completed = !todo.completed;
   }
 
 }

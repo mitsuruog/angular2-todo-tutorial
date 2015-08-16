@@ -28,8 +28,27 @@ var TodoApp = (function () {
     TodoApp.prototype.addTodo = function (text) {
         this.todos.push({
             title: text,
+            isEdit: false,
             completed: false
         });
+    };
+    TodoApp.prototype.editTodo = function (todo) {
+        todo.isEdit = true;
+    };
+    TodoApp.prototype.editCompleted = function ($event, todo) {
+        // Enter Key
+        if ($event.which === 13) {
+            var target = $event.target;
+            todo.title = target.value;
+            todo.isEdit = null;
+        }
+    };
+    TodoApp.prototype.deleteTodo = function (todo) {
+        var index = this.todos.indexOf(todo);
+        this.todos.splice(index, 1);
+    };
+    TodoApp.prototype.toggleComplete = function (todo) {
+        todo.completed = !todo.completed;
     };
     TodoApp = __decorate([
         angular2_1.Component({
