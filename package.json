@@ -1,0 +1,12 @@
+{
+  "name": "angular2-todo",
+  "version": "1.0.0",
+  "description": "angular 2 Todo application sample",
+  "main": "index.html",
+  "scripts": {
+    "watch": "tsc --watch -m commonjs -t es5 --emitDecoratorMetadata app.ts",
+    "server": "python -m SimpleHTTPServer"
+  },
+  "author": "mitsuruog <mitsuru.ogawa.jp@gmail.com>",
+  "license": "MIT"
+}
