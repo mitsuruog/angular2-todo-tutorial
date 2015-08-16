@@ -13,13 +13,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var TodoApp = (function () {
     function TodoApp() {
+        this.todos = [];
     }
+    TodoApp.prototype.enterTodo = function ($event, newTodo) {
+        // Enter Key
+        if ($event.which === 13) {
+            var text = newTodo.value.trim();
+            if (text) {
+                this.addTodo(text);
+                newTodo.value = '';
+            }
+        }
+    };
+    TodoApp.prototype.addTodo = function (text) {
+        this.todos.push({
+            title: text,
+            completed: false
+        });
+    };
     TodoApp = __decorate([
         angular2_1.Component({
             selector: 'todo-app'
         }),
         angular2_1.View({
-            template: '<h1>Hello world</h1>'
+            //  template: '<h1>Hello world</h1>'
+            templateUrl: 'todo.html',
+            directives: [angular2_1.NgFor]
         }), 
         __metadata('design:paramtypes', [])
     ], TodoApp);

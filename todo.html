@@ -1,0 +1,22 @@
+<section id="todo-app">
+
+  <header>
+    <h1>Todos</h1>
+    <input #new-todo (keyup)="enterTodo($event, newTodo)">
+  </header>
+
+  <div id="main">
+    <ul *ng-for="#todo of todos; var i = index">
+      <li>{{i+1}}. {{todo.title}}</li>
+    </ul>
+  </div>
+
+  <footer>
+
+  </footer>
+
+</section>
+
+<footer>
+  Created by mitsuruog
+</footer>
