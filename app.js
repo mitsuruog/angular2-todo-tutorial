@@ -13,7 +13,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var TodoApp = (function () {
     function TodoApp() {
-        this.todos = [];
+        this.STORAGE_KEY = 'angular2-todo';
+        this.todos = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
     }
     TodoApp.prototype.enterTodo = function ($event, newTodo) {
         // Enter Key
@@ -31,8 +32,9 @@ var TodoApp = (function () {
             isEdit: false,
             completed: false
         });
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
     };
-    TodoApp.prototype.editTodo = function (todo) {
+    TodoApp.prototype.editBeginning = function (todo) {
         todo.isEdit = true;
     };
     TodoApp.prototype.editCompleted = function ($event, todo) {
@@ -41,14 +43,20 @@ var TodoApp = (function () {
             var target = $event.target;
             todo.title = target.value;
             todo.isEdit = null;
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
         }
     };
     TodoApp.prototype.deleteTodo = function (todo) {
         var index = this.todos.indexOf(todo);
         this.todos.splice(index, 1);
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
     };
     TodoApp.prototype.toggleComplete = function (todo) {
         todo.completed = !todo.completed;
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
+    };
+    TodoApp.prototype.getCompletedCount = function () {
+        return this.todos.filter(function (todo) { return todo.completed; }).length;
     };
     TodoApp = __decorate([
         angular2_1.Component({

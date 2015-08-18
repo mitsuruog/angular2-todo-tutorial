@@ -2,7 +2,7 @@
 
   <header>
     <h1>Todos</h1>
-    <input #new-todo (keyup)="enterTodo($event, newTodo)">
+    新しいTodo：<input #new-todo (keyup)="enterTodo($event, newTodo)">
   </header>
 
   <div id="main">
@@ -11,17 +11,21 @@
         <input type="checkbox"
                (click)="toggleComplete(todo)"
                [checked]="todo.completed">
-        <label (dblclick)="editTodo(todo)">{{i+1}}. {{todo.title}}</label>
-        <input [style.display]="todo.isEdit?'inline-block':'none'"
-             [value]="todo.title"
-               (keyup)="editCompleted($event, todo)">
+        <label (dblclick)="editBeginning(todo)"
+           [style.text-decoration]="todo.completed?'line-through':''">
+          {{i+1}}. {{todo.title}}
+        </label>
+        <input #todo.title
+              [style.display]="todo.isEdit?'inline-block':'none'"
+              [value]="todo.title"
+              (keyup)="editCompleted($event, todo)">
         <button (click)="deleteTodo(todo)">delete</button>
       </li>
     </ul>
   </div>
 
   <footer>
-
+    <p>Todo消化状況： {{getCompletedCount()}} / {{todos.length}}</p>
   </footer>
 
 </section>

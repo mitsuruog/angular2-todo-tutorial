@@ -14,10 +14,12 @@ import {bootstrap, Component, View, NgFor} from 'angular2/angular2';
 
 class TodoApp {
 
+  STORAGE_KEY: String;
   todos: any;
-
+  
   constructor() {
-    this.todos = [];
+    this.STORAGE_KEY = 'angular2-todo';
+    this.todos = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
   }
 
   enterTodo($event, newTodo) {
@@ -38,9 +40,10 @@ class TodoApp {
       isEdit: false,
       completed: false
     });
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
   }
 
-  editTodo(todo) {
+  editBeginning(todo) {
     todo.isEdit = true;
   }
 
@@ -50,16 +53,23 @@ class TodoApp {
       var target = $event.target;
       todo.title = target.value;
       todo.isEdit = null;
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
     }
   }
 
   deleteTodo(todo) {
     var index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
   }
 
   toggleComplete(todo) {
     todo.completed = !todo.completed;
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
+  }
+  
+  getCompletedCount() {
+    return this.todos.filter(todo => todo.completed).length
   }
 
 }
