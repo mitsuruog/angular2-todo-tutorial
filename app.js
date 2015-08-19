@@ -16,35 +16,19 @@ var TodoApp = (function () {
         this.STORAGE_KEY = 'angular2-todo';
         this.todos = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
     }
-    TodoApp.prototype.enterTodo = function ($event, newTodo) {
-        // Enter Key
-        if ($event.which === 13) {
-            var text = newTodo.value.trim();
-            if (text) {
-                this.addTodo(text);
-                newTodo.value = '';
-            }
+    TodoApp.prototype.enterTodo = function (newTodo) {
+        var text = newTodo.value.trim();
+        if (text) {
+            this.addTodo(text);
+            newTodo.value = '';
         }
     };
     TodoApp.prototype.addTodo = function (text) {
         this.todos.push({
             title: text,
-            isEdit: false,
             completed: false
         });
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
-    };
-    TodoApp.prototype.editBeginning = function (todo) {
-        todo.isEdit = true;
-    };
-    TodoApp.prototype.editCompleted = function ($event, todo) {
-        // Enter Key
-        if ($event.which === 13) {
-            var target = $event.target;
-            todo.title = target.value;
-            todo.isEdit = null;
-            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
-        }
     };
     TodoApp.prototype.deleteTodo = function (todo) {
         var index = this.todos.indexOf(todo);

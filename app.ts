@@ -22,39 +22,20 @@ class TodoApp {
     this.todos = JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
   }
 
-  enterTodo($event, newTodo) {
-    // Enter Key
-    if($event.which === 13) {
-      var text = newTodo.value.trim();
-      if(text) {
-        this.addTodo(text);
-        newTodo.value = '';
-      }
+  enterTodo(newTodo) {
+    var text = newTodo.value.trim();
+    if(text) {
+      this.addTodo(text);
+      newTodo.value = '';
     }
-
   }
 
   addTodo(text) {
     this.todos.push({
       title: text,
-      isEdit: false,
       completed: false
     });
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
-  }
-
-  editBeginning(todo) {
-    todo.isEdit = true;
-  }
-
-  editCompleted($event, todo) {
-    // Enter Key
-    if($event.which === 13) {
-      var target = $event.target;
-      todo.title = target.value;
-      todo.isEdit = null;
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.todos));
-    }
   }
 
   deleteTodo(todo) {

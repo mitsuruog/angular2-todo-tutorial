@@ -2,24 +2,21 @@
 
   <header>
     <h1>Todos</h1>
-    新しいTodo：<input #new-todo (keyup)="enterTodo($event, newTodo)">
+    新しいTodo：<input #new-todo>
+    <button (click)="enterTodo(newTodo)">追加</button>
   </header>
 
   <div id="main">
-    <ul *ng-for="#todo of todos; var i = index">
+    <ul *ng-for="#todo of todos; #i = index">
       <li>
         <input type="checkbox"
                (click)="toggleComplete(todo)"
                [checked]="todo.completed">
-        <label (dblclick)="editBeginning(todo)"
+        <label
            [style.text-decoration]="todo.completed?'line-through':''">
           {{i+1}}. {{todo.title}}
         </label>
-        <input #todo.title
-              [style.display]="todo.isEdit?'inline-block':'none'"
-              [value]="todo.title"
-              (keyup)="editCompleted($event, todo)">
-        <button (click)="deleteTodo(todo)">delete</button>
+        <button (click)="deleteTodo(todo)">削除</button>
       </li>
     </ul>
   </div>
