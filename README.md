@@ -19,7 +19,7 @@
 - Todoのクローズ
 - Todoの保存
 
-
+![](/images/sample1.png)
 
 ## 事前準備
 
@@ -107,6 +107,8 @@ bootstrap(TodoApp);
 ローカルサーバーを立ち上げて、ブラウザでURLを表示すると次のような画面が表示されます。
 
 <http://localhost:8080>
+
+![](/images/sample2.png)
 
 ## Todoアプリの作成
 
