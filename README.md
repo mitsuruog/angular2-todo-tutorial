@@ -154,7 +154,7 @@ Todo機能を`コンポーネント`として切り出します。新しく`todo
 
 ### Todo作成機能の実装
 
-新しいTodoを入力するフィールドを作成し、Enterキーを押したタイミングで登録します。
+新しいTodoを入力するフィールドを作成し、追加ボタンを押したタイミングで登録します。
 
 **todo.html**
 
@@ -168,7 +168,7 @@ Todo機能を`コンポーネント`として切り出します。新しく`todo
 ```
 
 - `#new-todo`：テンプレート内で利用するローカル変数です。Componentコントローラでは`newTodo`で受け取ります。
-- `(keyup)`：イベントハンドラ`onKeyup`のことです。Componentコントローラの`enterTodo`が呼び出されます。
+- `(click)`：イベントハンドラ`onClick`のことです。Componentコントローラの`enterTodo`が呼び出されます。
 
 **app.ts**
 
@@ -182,7 +182,7 @@ class TodoApp {
   }
 
   // キーイベントハンドラ
-  enterTodo($event, newTodo) {
+  enterTodo(newTodo) {
     var text = newTodo.value.trim();
     if(text) {
       this.addTodo(text);
@@ -228,6 +228,7 @@ Todoが作成された場合に一覧表示します。
 // ビルトインディレクティブをインポートする
 import {bootstrap, Component, View, NgFor} from 'angular2/angular2';
 
+// directivesに設定することでテンプレート側で利用できるようになります
 @View({
   templateUrl: 'todo.html',
   directives: [NgFor]
