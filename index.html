@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="/">
   <meta charset="UTF-8">
   <title>Angular2 Todo</title>
-  <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.87/traceur-runtime.js"></script>
-  <script src="https://jspm.io/system@0.16.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-alpha.28/angular2.dev.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/rxjs/bundles/Rx.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  
+  <script src="https://code.angularjs.org/2.0.0-beta.3/router.dev.js"></script>
+    
+  <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      }
+    });
+    System.import('app/main')
+      .then(null, console.error.bind(console));
+  </script>  
 </head>
 <body>
-  <todo-app></todo-app>
-  <script>System.import('app');</script>
+  <my-app>Loading ...</my-app>
 </body>
 </html>
