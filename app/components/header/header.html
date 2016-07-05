@@ -1,0 +1,10 @@
+<header class="well">
+  <h1>Todos</h1>
+  <form class="form-inline">
+    <div class="form-group">
+      <label>新しいTodo：</label>
+      <input class="form-control" [(ngModel)]="title">
+    </div>
+    <button class="btn btn-primary" (click)="addTodo()">追加</button>
+  </form>
+</header>
