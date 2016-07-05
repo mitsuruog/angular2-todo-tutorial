@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TodoService} from '../../services/todo.service';
 import {Todo} from "../../models/todo.model";
 
@@ -9,19 +9,17 @@ import {Todo} from "../../models/todo.model";
 })
 export class TodoContentComponent {
 
-  todos: Todo[];
+  @Input()
+  todos:Todo[];
 
-  constructor(
-    private service: TodoService
-  ) {
-    this.todos = this.service.todos;
+  constructor(private service:TodoService) {
   }
 
-  toggleComplate(todo: Todo) {
+  toggleComplate(todo:Todo) {
     this.service.toggleComplate(todo);
   }
 
-  deleteTodo(todo: Todo) {
+  deleteTodo(todo:Todo) {
     this.service.remove(todo);
   }
 

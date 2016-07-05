@@ -3,6 +3,7 @@ import {TodoContentComponent} from './content/content.component';
 import {TodoHeaderComponent} from './header/header.component';
 import {TodoFooterComponent} from './footer/footer.component';
 import {TodoService} from '../services/todo.service';
+import {Todo} from "../models/todo.model";
 
 @Component({
   selector: 'my-app',
@@ -10,4 +11,10 @@ import {TodoService} from '../services/todo.service';
   providers: [TodoService],
   directives: [TodoContentComponent, TodoFooterComponent, TodoHeaderComponent]
 })
-export class AppComponent { }
+export class AppComponent {
+  todos: Todo[];
+
+  constructor(private service: TodoService) {
+    this.todos = this.service.todos;
+  }
+}
