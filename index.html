@@ -5,27 +5,27 @@
   <meta charset="UTF-8">
   <title>Angular2 Todo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-  <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+    }
+  </style>
 
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/systemjs/dist/system.src.js"></script>
-  <script src="node_modules/rxjs/bundles/Rx.js"></script>
-  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-  
-  <script src="https://code.angularjs.org/2.0.0-beta.3/router.dev.js"></script>
-    
+  <script src="../node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="../node_modules/zone.js/dist/zone.js"></script>
+  <script src="../node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="../node_modules/systemjs/dist/system.src.js"></script>
+  <script src="../node_modules/rxjs/bundles/Rx.js"></script>
+
   <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
+    System.import('app/system-config.js').then(function () {
+      System.import('app/main');
+    }).catch(function (err) {
+      console.log('error while importing:');
+      console.log(err);
+      console.log(err.stack);
     });
-    System.import('app/main')
-      .then(null, console.error.bind(console));
   </script>  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -36,9 +36,10 @@
     ga('create', 'UA-56126469-6', 'auto');
     ga('send', 'pageview');
   </script>
-
 </head>
+
 <body>
-  <my-app>Loading ...</my-app>
+<my-app>Loading...</my-app>
 </body>
+
 </html>
