@@ -1,0 +1,19 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="#todo of todos">
+    <div class="row">
+      <div class="col-xs-10">
+        <label class="">
+          <input type="checkbox"
+                 (click)="toggleComplate(todo)"
+                 [checked]="todo.isCompleted">
+        </label>
+        <span [class.complate]="todo.isCompleted">
+         {{todo.id}}. {{todo.title}}
+        </span>
+      </div>
+      <div class="col-xs-2 text-center">
+        <button class="btn btn-link" (click)="deleteTodo(todo)">削除</button>
+      </div>
+    </div>
+  </li>
+</ul>

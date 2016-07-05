@@ -1,10 +1,9 @@
-import {Component, OnInit} from 'angular2/core';
-
-import {TodoContentComponent} from '../components/content.component';
-import {TodoHeaderComponent} from '../components/header.component';
-import {TodoFooterComponent} from '../components/footer.component';
+import {Component} from '@angular/core';
+import {TodoContentComponent} from './content/content.component';
+import {TodoHeaderComponent} from './header/header.component';
+import {TodoFooterComponent} from './footer/footer.component';
 import {TodoService} from '../services/todo.service';
-import {Todo} from '../models/todo.model';
+import {Todo} from "../models/todo.model";
 
 @Component({
   selector: 'my-app',
@@ -12,5 +11,10 @@ import {Todo} from '../models/todo.model';
   providers: [TodoService],
   directives: [TodoContentComponent, TodoFooterComponent, TodoHeaderComponent]
 })
+export class AppComponent {
+  todos: Todo[];
 
-export class AppComponent { }
+  constructor(private service: TodoService) {
+    this.todos = this.service.todos;
+  }
+}
