@@ -1,5 +1,5 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="#todo of todos">
+  <li class="list-group-item" *ngFor="let todo of todos; let i = index">
     <div class="row">
       <div class="col-xs-10">
         <label class="">
@@ -8,7 +8,7 @@
                  [checked]="todo.isCompleted">
         </label>
         <span [class.complate]="todo.isCompleted">
-         {{todo.id}}. {{todo.title}}
+         {{i + 1}}. {{todo.title}}
         </span>
       </div>
       <div class="col-xs-2 text-center">
