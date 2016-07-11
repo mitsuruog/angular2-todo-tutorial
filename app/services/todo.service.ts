@@ -21,7 +21,7 @@ export class TodoService {
 
   add(title:string) {
     let newTodo = new Todo(
-      this.todos.length + 1,
+      Math.floor(Math.random() * 100000), // ランダムにIDを発番する
       title,
       false
     );
