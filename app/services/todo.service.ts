@@ -19,9 +19,9 @@ export class TodoService {
     });
   }
 
-  add(title:string) {
+  add(title:string):void {
     let newTodo = new Todo(
-      this.todos.length + 1,
+      Math.floor(Math.random() * 100000), // ランダムにIDを発番する
       title,
       false
     );
@@ -29,13 +29,13 @@ export class TodoService {
     this.save();
   }
 
-  remove(todo:Todo) {
+  remove(todo:Todo):void {
     const index = this.todos.indexOf(todo);
     this.todos.splice(index, 1);
     this.save();
   }
 
-  toggleComplate(todo:Todo) {
+  toggleComplate(todo:Todo):void {
     this.todos.filter(t => t.id === todo.id)
       .map(t => t.isCompleted = !t.isCompleted);
     this.save();
@@ -46,7 +46,7 @@ export class TodoService {
     return this.todos.filter(todo => todo.isCompleted).length;
   }
 
-  private save() {
+  private save():void {
     console.log('saving : ', this.todos);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
   }
