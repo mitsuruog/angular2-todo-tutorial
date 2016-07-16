@@ -27,7 +27,7 @@ Demo: https://angular2-todo.herokuapp.com/
 
 ## 凡例
 
-− :sparkles: は、より深くAngular2について知るためのTipsを表します。
+- :sparkles: は、より深くAngular2について知るためのTipsを表します。
 - :black_large_square: は、ターミナルなどCUIでの操作を表します。
 - :pencil2: は、ソースコードの編集を表します。
 
@@ -35,7 +35,7 @@ Demo: https://angular2-todo.herokuapp.com/
 
 始める前にハンズオンのscaffold(ひな形)を準備します。
 
-− [mitsuruog/angular2-minimum-starter: Minimum starter kit for angular2](https://github.com/mitsuruog/angular2-minimum-starter)
+- [mitsuruog/angular2-minimum-starter: Minimum starter kit for angular2](https://github.com/mitsuruog/angular2-minimum-starter)
 
 それでは、scaffoldをcloneして必要なモジュールをインストールします。
 
@@ -56,6 +56,10 @@ npm start
 この画面が表示されたら準備はOKです。
 
 ![](/images/sample2.png)
+
+:warning: 本ワークショップでは[Bootstrap](http://getbootstrap.com/)を使って画面をデザインしています。画面を変更する際はBootstrapのドキュメントも合わせて参照してください。
+
+- [Bootstrap · The world's most popular mobile-first and responsive front-end framework.](http://getbootstrap.com/)
 
 ## ツール
 
@@ -93,6 +97,12 @@ app
 └── system-config.js
 ```
 
+## コンポーネント関連図
+
+Angular2はComponentベースのフレームワークです。画面を作成するために幾つかのComponentを作成していきます。次に本ワークショップで作成するCompoenntとそれらと画面との関連図を示します。
+
+
+
 ## 作成手順
 
 以下の手順に沿って作成してください。
@@ -100,7 +110,7 @@ app
 1. TodoModelクラスを作成する
 1. TodoServiceクラスを作成する
 1. Todo新規作成を作成する
-1. Todo一覧と合計を表示する
+1. Todo一覧と消化状況を表示する
 1. Todoのクローズと削除機能を作成する
 
 ## カスタマイズ
@@ -126,4 +136,3 @@ app
 `ng-japan(日本Angularユーザーグループ)`のslackチャネルに参加することで、技術的な質問を行うことができます。また`#ng_jp`でtweetすると誰かが答えてくれるかもしれません。
 
 - [Join ng-japan on Slack!](https://ng-japan-invite.herokuapp.com/)
-
