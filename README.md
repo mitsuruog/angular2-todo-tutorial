@@ -101,7 +101,7 @@ app
 
 Angular2はComponentベースのフレームワークです。画面を作成するために幾つかのComponentを作成していきます。次に本ワークショップで作成するCompoenntとそれらと画面との関連図を示します。
 
-
+![](/images/sample3.png)
 
 ## 作成手順
 
