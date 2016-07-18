@@ -73,12 +73,12 @@ Augular2のブラウザでのデバックを容易にするため、以下のツ
 
 ```
 app
+├── app.component.ts
+├── app.html
 ├── common
 │   └── services
 │       └── logger.service.ts
 ├── components
-│   ├── app.component.ts
-│   ├── app.html
 │   ├── content
 │   │   ├── content.component.ts
 │   │   ├── content.css
